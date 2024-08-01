@@ -1,3 +1,4 @@
+/** The urls for getting data from bmonster */
 interface BMonsterURLs {
     lessons: {
         /**
@@ -8,6 +9,7 @@ interface BMonsterURLs {
     };
 }
 
+/** Contants of server application */
 interface Constants {
     /** Third party APIs urls and paths */
     apis: {
@@ -15,10 +17,21 @@ interface Constants {
     };
     /** Mapping to HTML query selectors of BMonster page */
     htmlTagMapping: {
-        /** Selectors for lessons */
-        lessons: {
-            /** Selector for getting a row of lessons (Lessons in a specific hour) */
-            rowsSelector: string;
+        /** HTML Query selectors for lessons by studio */
+        lessonsByStudio: {
+            /** Selectors for lessons */
+            lessons: {
+                /** Selector for getting a row of lessons (Lessons in a specific hour) */
+                rows: string;
+                /** Selector for getting the time of a lesson */
+                time: string;
+                /** Selector for getting the performer of a lesson */
+                performer: string;
+                /** Selector for getting the program of a lesson */
+                program: string;
+                /** Selector for getting the difficulty of a lesson */
+                difficulty: string;
+            };
         };
     };
 }
