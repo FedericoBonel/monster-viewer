@@ -1,3 +1,4 @@
+/** Server configuration variables */
 interface ServerConfig {
     /** Port number to be used in the server */
     port: number;
