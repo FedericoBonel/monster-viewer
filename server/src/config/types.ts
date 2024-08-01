@@ -6,6 +6,11 @@ interface ServerConfig {
     urls: {
         /** Base URL of the server */
         api: string;
+    },
+    /** Configuration variables related to proxies handling in server */
+    proxies: {
+        /** The number of proxies the application trusts */
+        maxTrusted: number
     }
 }
 

@@ -28,6 +28,9 @@ const config: Readonly<Config> = {
         urls: {
             api: getEnvString("BASE_URL"),
         },
+        proxies: {
+            maxTrusted: getEnvNumber("MAX_TRUSTED_PROXIES"),
+        },
     },
 };
 

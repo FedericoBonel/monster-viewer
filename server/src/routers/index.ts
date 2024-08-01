@@ -10,9 +10,6 @@ const configRoutes = (app: Express): void => {
         `${config.server.urls.api}${constants.resources.paths.lessons}`,
         lessonsRouter
     );
-    app.use(async (req: Request, res: Response): Promise<void> => {
-        res.status(StatusCodes.NOT_FOUND).send();
-    });
 };
 
 const routerSetup: RouterSetup = {
