@@ -1,5 +1,6 @@
 import { Express } from "express";
 import { Server } from "http";
+import "express-async-errors";
 import appFactory from "./app";
 import config from "./config";
 
