@@ -31,6 +31,10 @@ const config: Readonly<Config> = {
         proxies: {
             maxTrusted: getEnvNumber("MAX_TRUSTED_PROXIES"),
         },
+        rateLimit: {
+            minWindow: getEnvNumber("RATE_LIMIT_MIN_WINDOW"),
+            maxWindow: getEnvNumber("RATE_LIMIT_MAX_WINDOW"),
+        },
     },
 };
 

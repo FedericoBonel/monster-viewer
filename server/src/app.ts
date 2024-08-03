@@ -1,5 +1,6 @@
 import express, { Express, json, urlencoded } from "express";
-import errorHandlingSetUp from "./middlewares/errors";
+import errorHandlerMW from "./middlewares/errors";
+import securityMW from "./middlewares/security";
 import routerSetup from "./routers";
 import config from "./config";
 
@@ -12,7 +13,10 @@ const appFactory: AppFactory = {
         const app: Express = express();
         app.use(json());
         app.use(urlencoded({ extended: true }));
-        
+
+        // Setup the security middleware
+        securityMW.setup(app);
+
         // Set the number of trusted proxies
         app.set("trust proxy", config.server.proxies.maxTrusted);
 
@@ -20,7 +24,7 @@ const appFactory: AppFactory = {
         routerSetup.configRoutes(app);
 
         // Error handling configuration
-        errorHandlingSetUp.setup(app);
+        errorHandlerMW.setup(app);
 
         return app;
     },

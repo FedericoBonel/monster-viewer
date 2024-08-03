@@ -1,15 +1,15 @@
 import { Express } from "express";
-import SetupErrorMW from "./types";
+import ErrorHandlerMW from "./types";
 import notFoundMW from "./notFoundMW";
-import errorHandlerMW from "./errorHandlerMW";
+import handlerMW from "./errorHandlerMW";
 
 const setup = (app: Express): void => {
     app.use(notFoundMW);
-    app.use(errorHandlerMW);
+    app.use(handlerMW);
 };
 
-const errorHandlingSetUp: SetupErrorMW = {
+const errorHandlerMW: ErrorHandlerMW = {
     setup,
 };
 
-export default errorHandlingSetUp;
+export default errorHandlerMW;
