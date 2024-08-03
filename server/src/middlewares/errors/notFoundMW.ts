@@ -1,11 +1,12 @@
-import { Request, Response } from "express";
+import { RequestHandler } from "express";
+import NotFoundError from "../../utils/errors/NotFoundError";
+import messages from "../../utils/messages";
 
 /**
  * Middleware that handles all the requests that could not be handled by any existing route
  */
-const notFoundMW = async (req: Request, res: Response): Promise<never> => {
-    // TODO Add custom errors and use that
-    throw new Error("Route not found");
+const notFoundMW: RequestHandler = async (req, res) => {
+    throw new NotFoundError(messages.httpErrors.notFound);
 };
 
 export default notFoundMW;

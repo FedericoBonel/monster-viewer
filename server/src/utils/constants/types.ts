@@ -11,6 +11,7 @@ export enum BMonsterStudios {
 
 /** The urls for getting data from bmonster */
 interface BMonsterURLs {
+    /** Urls for managing lessons */
     lessons: {
         /**
          * Returns the url to get all studios by code
@@ -18,6 +19,12 @@ interface BMonsterURLs {
          */
         get(studio: BMonsterStudios): string;
     };
+}
+
+/** Third party APIs urls and paths */
+export interface APIs {
+    /** BMonster urls from which to scrape data */
+    bmonster: BMonsterURLs;
 }
 
 /** The HTML Selectors for scrapping data */
@@ -40,22 +47,58 @@ export interface HTMLSelectors {
     };
 }
 
+/** Resources constants */
+export interface Resources {
+    /** Paths to exposed resources */
+    paths: {
+        /** Path to lessons resource */
+        lessons: string;
+        /** Path to daily schedule of lessons in all studios */
+        dailySchedule: string;
+    };
+}
+
+/** Validation values constants for inputs */
+export interface ValidationValues {
+    /** Values related with lessons */
+    lessons: {
+        /** Values related with date from which to search lessons validation */
+        dateFrom: {
+            /** Number of days from now from which is valid to search */
+            daysBefore: number;
+            /** Number of days from now from which is valid to search */
+            daysAfter: number;
+        };
+    };
+    /** Values related with pagination in queries */
+    pagination: {
+        /** Values related with validation of page number */
+        page: {
+            /** Minimum page number */
+            min: number;
+            /** Maximum page number */
+            max: number;
+        };
+        /** Values related with validation of limit number */
+        limit: {
+            /** Minimum limit number */
+            min: number;
+            /** Maximum limit number */
+            max: number;
+        };
+    };
+}
+
 /** Contants of server application */
 interface Constants {
     /** Third party APIs urls and paths */
-    apis: {
-        bmonster: BMonsterURLs;
-    };
+    apis: APIs;
     /** Mapping to HTML query selectors of BMonster page */
     htmlTagMapping: HTMLSelectors;
     /** REST API resources constants */
-    resources: {
-        /** Paths to exposed resources */
-        paths: {
-            /** Path to lessons resource */
-            lessons: string;
-        };
-    };
+    resources: Resources;
+    /** Validation values constants for inputs */
+    validation: ValidationValues;
 }
 
 export default Constants;

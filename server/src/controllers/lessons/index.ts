@@ -1,13 +1,20 @@
-import { Request, Response } from "express";
+import { RequestHandler } from "express";
 import { StatusCodes } from "http-status-codes";
-import LessonsController from "./types";
+import LessonsController, { DailyScheduleListQueries } from "./types";
+import createSuccessPayload from "../../utils/payloads/SuccessPayload";
 
-const getList = async (req: Request, res: Response): Promise<void> => {
-    res.status(StatusCodes.OK).json({ data: "lessons" });
+const getDailyScheduleList: RequestHandler<
+    unknown,
+    unknown,
+    unknown,
+    DailyScheduleListQueries
+> = async (req, res) => {
+    const { date } = req.query;
+    res.status(StatusCodes.OK).json(createSuccessPayload(date));
 };
 
 const lessonsController: LessonsController = {
-    getList,
+    getDailyScheduleList,
 };
 
 export default lessonsController;

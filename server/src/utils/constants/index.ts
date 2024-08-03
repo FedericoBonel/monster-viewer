@@ -1,22 +1,14 @@
+import apis from "./apis";
 import htmlSelectors from "./htmlSelectors";
+import resources from "./resources";
 import Constants from "./types";
+import validation from "./validation";
 
 const constants: Readonly<Constants> = {
-    apis: {
-        bmonster: {
-            lessons: {
-                get(studio) {
-                    return `https://b-monster.hacomono.jp/reserve/schedule/${studio}/${studio}`;
-                },
-            },
-        },
-    },
+    apis,
     htmlTagMapping: htmlSelectors,
-    resources: {
-        paths: {
-            lessons: "/lessons",
-        },
-    },
+    resources,
+    validation,
 };
 
 export default constants;
