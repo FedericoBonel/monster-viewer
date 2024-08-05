@@ -1,15 +1,14 @@
 import LessonListOutput from "../LessonListOutput";
-import LessonsTransformers, { LessonEntity } from "./types";
+import LessonsTransformers from "./types";
+import Lesson from "../../../models/lessons/types";
 
 const lessonsTransfomers: LessonsTransformers = {
-    toLessonListOutput: function (
-        storedLesson: LessonEntity
-    ): LessonListOutput {
+    toLessonListOutput: function (storedLesson: Lesson): LessonListOutput {
         return new LessonListOutput(
-            storedLesson.studio,
-            storedLesson.performer,
-            storedLesson.program,
-            storedLesson.difficulty,
+            storedLesson.studio.name,
+            storedLesson.performer.name,
+            storedLesson.program.name,
+            storedLesson.difficulty.name,
             storedLesson.time.toISOString()
         );
     },
