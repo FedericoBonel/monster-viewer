@@ -3,6 +3,7 @@ import errorHandlerMW from "./middlewares/errors";
 import securityMW from "./middlewares/security";
 import routerSetup from "./routers";
 import config from "./config";
+import compression from "compression";
 
 interface AppFactory {
     createApp(): Express;
@@ -11,6 +12,7 @@ interface AppFactory {
 const appFactory: AppFactory = {
     createApp() {
         const app: Express = express();
+        app.use(compression());
         app.use(json());
         app.use(urlencoded({ extended: true }));
 
