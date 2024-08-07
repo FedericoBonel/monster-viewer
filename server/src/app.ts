@@ -1,6 +1,7 @@
 import express, { Express, json, urlencoded } from "express";
-import errorHandlerMW from "./middlewares/errors";
 import securityMW from "./middlewares/security";
+import loggingMW from "./middlewares/logging";
+import errorHandlerMW from "./middlewares/errors";
 import routerSetup from "./routers";
 import config from "./config";
 import compression from "compression";
@@ -21,6 +22,9 @@ const appFactory: AppFactory = {
 
         // Set the number of trusted proxies
         app.set("trust proxy", config.server.proxies.maxTrusted);
+
+        // Set up the HTTP logger
+        loggingMW.setup(app);
 
         // Routes configuration
         routerSetup.configRoutes(app);

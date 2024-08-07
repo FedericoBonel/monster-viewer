@@ -1,5 +1,6 @@
 import dotenv from "dotenv";
 import { Config } from "./types";
+import messages from "../utils/messages";
 
 dotenv.config();
 
@@ -7,7 +8,7 @@ dotenv.config();
 const getEnvString = (name: string): string => {
     const value = process.env[name];
     if (!value) {
-        throw new Error(`Missing environment variable: ${name}`);
+        throw new Error(messages.info.nonDefinedEnvError(name));
     }
     return value;
 };
@@ -17,7 +18,7 @@ const getEnvNumber = (name: string): number => {
     const value: string = getEnvString(name);
     const num: number = Number(value);
     if (isNaN(num)) {
-        throw new Error(`Invalid number for environment variable: ${name}`);
+        throw new Error(messages.info.invalidNumEnvError(name));
     }
     return num;
 };
@@ -34,6 +35,9 @@ const config: Readonly<Config> = {
         rateLimit: {
             minWindow: getEnvNumber("RATE_LIMIT_MIN_WINDOW"),
             maxWindow: getEnvNumber("RATE_LIMIT_MAX_WINDOW"),
+        },
+        logging: {
+            level: getEnvString("LOGGING_LEVEL"),
         },
     },
 };

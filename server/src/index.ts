@@ -3,6 +3,8 @@ import { Server } from "http";
 import "express-async-errors";
 import appFactory from "./app";
 import config from "./config";
+import logger from "./utils/logger";
+import messages from "./utils/messages";
 
 /** Initializes the server */
 const startServer = async (): Promise<Server | never> => {
@@ -12,10 +14,10 @@ const startServer = async (): Promise<Server | never> => {
     try {
         const app: Express = appFactory.createApp();
         server = app.listen(config.server.port, () => {
-            console.log(`Server listening in port ${config.server.port}`);
+            logger.info(messages.info.serverStart(config.server.port));
         });
     } catch (error) {
-        console.error(`An error happened during initialization ${error}`);
+        logger.error(messages.info.serverErrorOnStart(error as Error));
         process.exit(1);
     }
     return server;
@@ -24,7 +26,7 @@ const startServer = async (): Promise<Server | never> => {
 startServer().then((server: Server): void => {
     // Attach on close event handler
     process.on("SIGTERM", (): void => {
-        console.log("Server shutting down...");
+        logger.info(messages.info.serverStop);
         if (server) server.close();
     });
 });
