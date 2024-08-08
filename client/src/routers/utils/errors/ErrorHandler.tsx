@@ -9,7 +9,7 @@ const ErrorHandler = () => {
     const code = error?.response?.status ?? 500;
 
     // Redirect user to error page
-    return <Navigate to={`${routes.error}/${code}`} />;
+    return <Navigate to={routes.error(code)} />;
 };
 
 export default ErrorHandler;

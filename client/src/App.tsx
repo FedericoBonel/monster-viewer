@@ -13,19 +13,24 @@ const appRouter = createBrowserRouter([
         children: [
             // Redirect to daily schedule
             {
-                path: routes.home,
-                element: <Navigate to={routes.dailyschedule} />,
+                path: routes.home(),
+                element: <Navigate to={routes.dailyschedule()} />,
             },
             // Show the daily schedule page
             {
-                path: routes.dailyschedule,
+                path: routes.dailyschedule(),
                 element: <h1>Hello there</h1>,
-            }
+            },
+            // Error page
+            {
+                path: routes.error(),
+                element: <p>An error happened</p>,
+            },
         ],
     },
 ]);
 
 /** Returns the applications router provider (i.e. app entry point). */
-const App = () => <RouterProvider router={appRouter}/>;
+const App = () => <RouterProvider router={appRouter} />;
 
 export default App;

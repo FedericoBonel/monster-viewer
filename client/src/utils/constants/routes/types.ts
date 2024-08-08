@@ -1,9 +1,9 @@
 /** Routes to different pages in client */
 export default interface Routes {
-    /** Home route */
-    home: string;
-    /** Daily schedule route */
-    dailyschedule: string;
-    /** Error route */
-    error: string;
+    /** Creates Home route */
+    home: () => string;
+    /** Creates Daily schedule route */
+    dailyschedule: (date?: string) => string;
+    /** Creates Error route */
+    error: (code?: number) => string;
 }
