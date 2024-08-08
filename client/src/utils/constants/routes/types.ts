@@ -1,9 +1,11 @@
 /** Routes to different pages in client */
 export default interface Routes {
-    /** Creates Home route */
+    /** Creates home page route */
     home: () => string;
-    /** Creates Daily schedule route */
+    /** Creates daily schedule page route */
     dailyschedule: (date?: string) => string;
-    /** Creates Error route */
+    /** Creates the error page route */
     error: (code?: number) => string;
+    /** Creates the route to go to the lesson reservation page */
+    lesson: (lessonId: string) => string;
 }

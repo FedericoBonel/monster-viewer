@@ -5,6 +5,8 @@ const routes: Routes = {
     dailyschedule: (date?: string) =>
         `/dailyschedule?${date ? `date=${date}` : ""}`,
     error: (code?: number) => `/error${code ? `/${code}` : ""}`,
+    lesson: (lessonId?: string) =>
+        `https://b-monster.hacomono.jp/reserve/space/${lessonId}`,
 };
 
 export default routes;
