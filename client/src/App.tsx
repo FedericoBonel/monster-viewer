@@ -3,8 +3,10 @@ import {
     RouterProvider,
     Navigate,
 } from "react-router-dom";
+import LessonsRouter from "@/routers/lessons";
+import ErrorRouter from "@/routers/errors";
 import ErrorHandler from "@/routers/utils/errors/ErrorHandler";
-import routes from "./utils/constants/routes";
+import routes from "@/utils/constants/routes";
 
 /** Applications router */
 const appRouter = createBrowserRouter([
@@ -13,18 +15,18 @@ const appRouter = createBrowserRouter([
         children: [
             // Redirect to daily schedule
             {
-                path: routes.home(),
+                index: true,
                 element: <Navigate to={routes.dailyschedule()} />,
             },
             // Show the daily schedule page
             {
                 path: routes.dailyschedule(),
-                element: <h1>Hello there</h1>,
+                children: [LessonsRouter],
             },
             // Error page
             {
                 path: routes.error(),
-                element: <p>An error happened</p>,
+                children: [ErrorRouter],
             },
         ],
     },

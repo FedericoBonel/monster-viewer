@@ -4,7 +4,7 @@ const routes: Routes = {
     home: () => "/",
     dailyschedule: (date?: string) =>
         `/dailyschedule?${date ? `date=${date}` : ""}`,
-    error: (code?: number) => `/error/${code}`,
+    error: (code?: number) => `/error${code ? `/${code}` : ""}`,
 };
 
 export default routes;
