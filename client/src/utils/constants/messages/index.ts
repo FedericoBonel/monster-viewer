@@ -7,6 +7,9 @@ const messages: Readonly<Messages> = {
                 `Missing environment variable: ${varName}`,
         },
     },
+    datePicker: {
+        label: "日付",
+    },
 };
 
 export default messages;

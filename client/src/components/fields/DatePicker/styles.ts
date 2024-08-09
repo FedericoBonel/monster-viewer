@@ -2,15 +2,8 @@ import { SxProps } from "@mui/material/styles";
 
 export const DatePickerStyles: SxProps = {
     width: "100%",
-    padding: 1,
+    padding: "1rem 0.5rem 0.5rem 0.5rem",
     display: "flex",
     justifyContent: "center",
-};
-
-export const DatePickerSelectedStyles: SxProps = {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    flex: 1,
-    maxWidth: { md: 500 },
+    alignItems: "center"
 };

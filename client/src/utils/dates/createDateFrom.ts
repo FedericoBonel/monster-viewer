@@ -1,19 +1,20 @@
+import { Dayjs } from "dayjs";
+import dayjs from "@/lib/dayjs/instance";
+import validation from "../constants/validation";
+
 /**
  * Creates a date from a string, if the string is not a valid date it
  * returns a the date for today according to local time.
  *
- * NOTE: This does not validate the string it self (i.g: 2024/02/31 will return a date with the date of 2024/03/02)
- * but it will check that it can create an object with a valid date from it.
- *
  * @param date The date string from which to create the date object
  */
-const createDateFrom = (date: string): Date => {
-    const givenDate = new Date(date);
-    if (isNaN(givenDate.getTime())) {
+const createDateFrom = (date: string | undefined | null): Dayjs => {
+    const givenDate = dayjs(date, validation.dates.dateFormat, true);
+    if (!givenDate.isValid()) {
         // Not valid instance, return today
-        return new Date();
+        return dayjs();
     }
-    // Valid instance, return the new date objecet
+    // Valid instance, return the new date object
     return givenDate;
 };
 

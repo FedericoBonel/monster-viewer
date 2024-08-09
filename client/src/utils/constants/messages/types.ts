@@ -8,6 +8,11 @@ interface Messages {
             nonDefinedEnv: (varName: string) => string;
         };
     };
+    /** Date picker messages */
+    datePicker: {
+        /** Returns the label for the date picker */
+        label: string;
+    };
 }
 
 export default Messages;

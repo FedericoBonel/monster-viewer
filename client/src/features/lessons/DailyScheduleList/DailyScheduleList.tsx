@@ -1,24 +1,28 @@
-import { MouseEventHandler } from "react";
 import { useSearchParams } from "react-router-dom";
+import { Dayjs } from "dayjs";
+import dayjs from "@/lib/dayjs/instance";
 import Schedule from "@/components/schedules/Schedule";
 import DatePicker from "@/components/fields/DatePicker";
 import Studio from "./components/Studio";
 import createDateFrom from "@/utils/dates/createDateFrom";
-import addDays from "@/utils/dates/addDays";
+import validation from "@/utils/constants/validation";
 
 /** Renders the schedule by day grouped by studios */
 const DailyScheduleList = () => {
     const [searchParams, setSearchParams] = useSearchParams();
-    const selectedDate: Date = createDateFrom(searchParams.get("date") ?? "");
+    const selectedDate: Dayjs = createDateFrom(searchParams.get("date"));
 
-    const onClickPrevDay: MouseEventHandler = () => {
-        const prevDate = addDays(selectedDate, -1);
-        setSearchParams({ date: prevDate.toLocaleDateString() });
+    const onClickPrevDay = (newValue: Dayjs) => {
+        setSearchParams({ date: newValue.format(validation.dates.dateFormat) });
     };
 
-    const onClickNextDay: MouseEventHandler = () => {
-        const nextDate = addDays(selectedDate, 1);
-        setSearchParams({ date: nextDate.toLocaleDateString() });
+    const onClickNextDay = (newValue: Dayjs) => {
+        setSearchParams({ date: newValue.format(validation.dates.dateFormat) });
+    };
+
+    const onSelectDate = (newValue: Dayjs | null) => {
+        const newDate = newValue ?? dayjs();
+        setSearchParams({ date: newDate.format(validation.dates.dateFormat) });
     };
 
     // TODO change this to actual query
@@ -109,6 +113,9 @@ const DailyScheduleList = () => {
                 selectedDate={selectedDate}
                 onClickNext={onClickNextDay}
                 onClickPrev={onClickPrevDay}
+                onSelectDate={onSelectDate}
+                minDate={validation.dates.minDate}
+                maxDate={validation.dates.maxDate}
             />
             <Schedule>{studioColumns}</Schedule>
         </>

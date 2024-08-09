@@ -1,10 +1,11 @@
 import { ReactElement } from "react";
+import dayjs from "@/lib/dayjs/instance";
 import ScheduleColumn from "@/components/schedules/ScheduleColumn";
 import ScheduleColumnCell from "@/components/schedules/ScheduleColumnCell";
 import ScheduleColumnHeader from "@/components/schedules/ScheduleColumnHeader";
 import LessonItemDTO from "@/apis/dtos/lessons/LessonItemDTO";
-import toTimeString from "@/utils/dates/toTimeString";
 import routes from "@/utils/constants/routes";
+import validation from "@/utils/constants/validation";
 
 interface StudioProps {
     /** The name of the studio. This is the header of the column */
@@ -19,7 +20,7 @@ const Studio = ({ studioName, lessons }: StudioProps) => {
         <ScheduleColumnCell
             key={lesson._id}
             title={lesson.performer.name}
-            subtitleTop={toTimeString(new Date(lesson.time))}
+            subtitleTop={dayjs(lesson.time).format(validation.dates.timeFormat)}
             subtitleBottom={lesson.program.name}
             href={routes.lesson(lesson._id)}
         />

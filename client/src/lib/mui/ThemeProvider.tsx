@@ -8,6 +8,8 @@ import {
     ThemeProvider as MUIThemeProvider,
     createTheme,
 } from "@mui/material/styles";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 
 const theme = createTheme();
 
@@ -22,10 +24,12 @@ interface ThemeProviderProps {
  */
 const ThemeProvider = ({ children }: ThemeProviderProps) => {
     return (
-        <MUIThemeProvider theme={theme}>
-            <CssBaseline enableColorScheme />
-            {children}
-        </MUIThemeProvider>
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <MUIThemeProvider theme={theme}>
+                <CssBaseline enableColorScheme />
+                {children}
+            </MUIThemeProvider>
+        </LocalizationProvider>
     );
 };
 
