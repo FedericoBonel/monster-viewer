@@ -7,3 +7,7 @@ export const DatePickerStyles: SxProps = {
     justifyContent: "center",
     alignItems: "center"
 };
+
+export const PrevNextButtonStyles: SxProps = { fontSize: 40 }
+
+export const TextFieldStyles: SxProps = { maxWidth: { md: "50%" } }

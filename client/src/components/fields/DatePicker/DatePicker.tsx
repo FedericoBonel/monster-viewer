@@ -1,13 +1,20 @@
 import { MouseEventHandler } from "react";
 import { Dayjs } from "dayjs";
-import { DatePicker as MUIDatePicker } from "@mui/x-date-pickers/DatePicker";
+import {
+    DatePickerSlotProps,
+    DatePicker as MUIDatePicker,
+} from "@mui/x-date-pickers/DatePicker";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import InputAdornment from "@mui/material/InputAdornment";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import { DatePickerStyles } from "./styles";
+import {
+    DatePickerStyles,
+    PrevNextButtonStyles,
+    TextFieldStyles,
+} from "./styles";
 import messages from "@/utils/constants/messages";
 
 interface DatePicker {
@@ -24,6 +31,20 @@ interface DatePicker {
     /** The minimum selectable date */
     maxDate: Dayjs;
 }
+
+const datePickerSlotProps: DatePickerSlotProps<Dayjs, false> = {
+    textField: {
+        InputProps: {
+            startAdornment: (
+                <InputAdornment position="start">
+                    <CalendarMonthIcon />
+                </InputAdornment>
+            ),
+        },
+        fullWidth: true,
+        sx: TextFieldStyles,
+    },
+};
 
 /** Renders a date picker with arrow nagivation and calendar picker */
 const DatePicker = ({
@@ -56,29 +77,16 @@ const DatePicker = ({
                 color="primary"
                 size="large"
                 onClick={handlePrev}
-                sx={{ fontSize: 40 }}
+                sx={PrevNextButtonStyles}
                 disabled={disablePrevButton}
             >
                 <ChevronLeftIcon fontSize="inherit" />
             </IconButton>
             <MUIDatePicker
-                // TODO: Also check if you can add dayjs in a lib for better centralization and extract format there or in constants or utils date
                 label={messages.datePicker.label}
                 value={selectedDate}
                 onChange={onSelectDate}
-                slotProps={{
-                    textField: {
-                        InputProps: {
-                            startAdornment: (
-                                <InputAdornment position="start">
-                                    <CalendarMonthIcon />
-                                </InputAdornment>
-                            ),
-                        },
-                        fullWidth: true,
-                        sx: { maxWidth: { md: "50%" } },
-                    },
-                }}
+                slotProps={datePickerSlotProps}
                 minDate={minDate}
                 maxDate={maxDate}
             />
@@ -87,7 +95,7 @@ const DatePicker = ({
                 color="primary"
                 size="large"
                 onClick={handleNext}
-                sx={{ fontSize: 40 }}
+                sx={PrevNextButtonStyles}
                 disabled={disableNextButton}
             >
                 <ChevronRightIcon fontSize="inherit" />
