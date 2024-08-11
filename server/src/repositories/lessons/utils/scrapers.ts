@@ -81,6 +81,7 @@ export const scrapeLessonsByStudio = async (
                 program: { _id: "DBID", name: program },
                 difficulty: { _id: "DBID", name: dificulty },
                 studio: { _id: "DBID", name: BMonsterStudios[studioId] },
+                bmonsterId: "BMONSTERID"
             });
     });
 
