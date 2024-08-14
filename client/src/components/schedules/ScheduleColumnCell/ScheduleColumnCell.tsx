@@ -3,17 +3,23 @@ import Card from "@mui/material/Card";
 import CardActionArea from "@mui/material/CardActionArea";
 import CardHeader from "@mui/material/CardHeader";
 import Typography from "@mui/material/Typography";
-import { ScheduleCellCardStyles, ScheduleCellTitleStyles } from "./styles";
+import {
+    ScheduleCellCardStyles,
+    ScheduleCellTitleStyles,
+    ScheduleCellCardActionAreaStyles,
+} from "./styles";
 
 interface ScheduleColumnCellProps {
     /** The message to show on the top subtitle */
-    subtitleTop: string;
+    subtitleTop?: string;
     /** The message to show on the title */
-    title: string;
+    title?: string;
     /** The message to show on the bottom subtitle */
-    subtitleBottom: string;
+    subtitleBottom?: string;
     /** The link where the user should be redirected after clicking on the cell */
-    href: string;
+    href?: string;
+    /** If true then the cell is disabled and not clickable */
+    disabled?: boolean;
 }
 
 /** Renders a schedule column cell (Normally an event: Lesson, etc.) */
@@ -22,16 +28,20 @@ const ScheduleColumnCell = ({
     title,
     subtitleBottom,
     href,
+    disabled = false,
 }: ScheduleColumnCellProps) => {
     return (
         <Card
-            sx={ScheduleCellCardStyles}
+            sx={ScheduleCellCardStyles(disabled)}
             component="a"
             href={href}
             rel="noreferrer noopener"
             target="_blank"
         >
-            <CardActionArea>
+            <CardActionArea
+                sx={ScheduleCellCardActionAreaStyles}
+                disabled={disabled}
+            >
                 <CardHeader
                     sx={ScheduleCellTitleStyles}
                     title={

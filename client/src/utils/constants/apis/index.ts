@@ -1,5 +1,5 @@
-import Apis from "./types";
 import config from "@/config";
+import Apis from "./types";
 
 const apis: Apis = {
     bmonster: {
@@ -10,9 +10,7 @@ const apis: Apis = {
                 month: "2-digit",
                 day: "2-digit",
             });
-            const formattedDate = new URLSearchParams(
-                formatter.format(date)
-            ).toString();
+            const formattedDate = formatter.format(date);
             return `${config.apis.bmonster.baseUrl}/lessons/dailyschedule?date=${formattedDate}`;
         },
     },

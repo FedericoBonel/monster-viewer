@@ -1,5 +1,5 @@
 /** Structure of how a lesson is received from API in a list */
-interface LessonItemDTO {
+interface LessonItem {
     /** The lesson id */
     readonly _id: string;
     /** The studio where the lesson is happening */
@@ -26,4 +26,4 @@ interface LessonItemDTO {
     readonly time: string;
 }
 
-export default LessonItemDTO;
+export default LessonItem;
