@@ -5,6 +5,7 @@ import appFactory from "./app";
 import config from "./config";
 import logger from "./utils/logger";
 import messages from "./utils/messages";
+import connectToDB from "./utils/db/connect";
 
 /** Initializes the server */
 const startServer = async (): Promise<Server | never> => {
@@ -13,6 +14,7 @@ const startServer = async (): Promise<Server | never> => {
     // If an error happens close the process
     try {
         const app: Express = appFactory.createApp();
+        await connectToDB(config.db.url);
         server = app.listen(config.server.port, () => {
             logger.info(messages.info.serverStart(config.server.port));
         });

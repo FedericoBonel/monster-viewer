@@ -1,7 +1,7 @@
 import Entity from "../utils/Entity";
 
 /** Structure of denormalized studio */
-interface DenormalizedStudio {
+interface Studio {
     _id: string;
     name: string;
 }
@@ -30,7 +30,7 @@ export default class LessonListOutput extends Entity {
         /** BMonster id of the lesson */
         public readonly _id: string,
         /** The studio where the lesson is happeing */
-        public readonly studio: DenormalizedStudio,
+        public readonly studio: Studio,
         /** The performer of the lesson */
         public readonly performer: Performer,
         /** The program of the lesson */

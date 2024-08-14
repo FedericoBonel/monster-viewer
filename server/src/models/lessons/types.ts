@@ -4,10 +4,10 @@ import Performer from "../performers/types";
 import Program from "../programs/types";
 import Difficulty from "../difficulties/types";
 
-type DenormalizedStudio = Pick<Studio, "_id" | "name">;
-type DenormalizedPerformer = Pick<Performer, "_id" | "name">;
-type DenormalizedProgram = Pick<Program, "_id" | "name">;
-type DenormalizedDifficulty = Pick<Difficulty, "_id" | "name">;
+export type DenormalizedStudio = Pick<Studio, "_id" | "name">;
+export type DenormalizedPerformer = Pick<Performer, "_id" | "name">;
+export type DenormalizedProgram = Pick<Program, "_id" | "name">;
+export type DenormalizedDifficulty = Pick<Difficulty, "_id" | "name">;
 
 export default interface Lesson extends Entity {
     /** Identifier of the lesson in the bmonster system */

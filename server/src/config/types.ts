@@ -26,8 +26,18 @@ interface ServerConfig {
     };
 }
 
+/** Configuration of database variables */
+interface DBConfig {
+    /** Database connection string */
+    url: string;
+}
+
 /** Server configuration type */
 export interface Config {
+    /** Node environment (i.g. production, development, etc.) */
+    env: string;
     /** Server configuration variables */
     server: ServerConfig;
+    /** Database configuration variables */
+    db: DBConfig;
 }

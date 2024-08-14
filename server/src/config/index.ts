@@ -24,6 +24,7 @@ const getEnvNumber = (name: string): number => {
 };
 
 const config: Readonly<Config> = {
+    env: getEnvString("NODE_ENV"),
     server: {
         port: getEnvNumber("PORT"),
         urls: {
@@ -39,6 +40,9 @@ const config: Readonly<Config> = {
         logging: {
             level: getEnvString("LOGGING_LEVEL"),
         },
+    },
+    db: {
+        url: getEnvString("DB_URL"),
     },
 };
 
