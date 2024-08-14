@@ -3,6 +3,7 @@ import Lesson from "./types";
 import DenormStudio from "./DenormStudio";
 import DenormProgram from "./DenormProgram";
 import DenormDifficulty from "./DenormDifficulty";
+import DenormPerformer from "./DenormPerformer";
 
 const MODEL_NAME = "Lesson";
 
@@ -23,6 +24,10 @@ const LessonsSchema = new Schema<Lesson>({
     },
     difficulty: {
         type: DenormDifficulty,
+        required: true,
+    },
+    performer: {
+        type: DenormPerformer,
         required: true,
     },
     time: {

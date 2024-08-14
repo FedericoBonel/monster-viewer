@@ -46,7 +46,20 @@ const dailyScheduleListingValidator: Array<RequestHandler> = [
                         errorMessage: messages.validation.lessons.date,
                         bail: true,
                     },
-                    toDate: true,
+                    // Transform to UTC from JP timezone
+                    customSanitizer: {
+                        options: (date): Date => {
+                            const dateFrom = new Date(date);
+                            // Convert to UTC from JP time
+                            dateFrom.setUTCHours(
+                                dateFrom.getUTCHours() - 9,
+                                0,
+                                0,
+                                0
+                            );
+                            return dateFrom;
+                        },
+                    },
                 },
             },
             ["query"]

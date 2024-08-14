@@ -1,9 +1,15 @@
 import Lesson from "../../models/lessons/types";
 
-/** Abstraction of the result of a get lessons by date grouped by studio query */
-export interface LessonsByDateGroupedByStudioRes {
-    [studioName: string]: Array<Lesson>;
+export interface AggregateSchedule {
+    _id: {
+        studio: string;
+    };
+    lessons: Lesson[];
 }
+
+/** Abstraction of the result of a get lessons by date grouped by studio query */
+export interface LessonsByDateGroupedByStudioRes
+    extends Record<string, Array<Lesson>> {}
 
 /** Abstraction of the lessons repository */
 export default interface LessonsRepository {

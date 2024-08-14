@@ -1,20 +1,49 @@
+import Lesson from "../../models/lessons/Lesson";
 import { BMonsterStudios } from "../../utils/constants/types";
-import LessonsRepository, { LessonsByDateGroupedByStudioRes } from "./types";
+import LessonsRepository, {
+    AggregateSchedule,
+    LessonsByDateGroupedByStudioRes,
+} from "./types";
 
 const lessonsRepository: LessonsRepository = {
     getLessonsByTimeGroupByStudio: async (
         date: Date
     ): Promise<LessonsByDateGroupedByStudioRes> => {
-        // TODO: Implement this from database
-        return {
-            [BMonsterStudios[1]]: [],
-            [BMonsterStudios[2]]: [],
-            [BMonsterStudios[3]]: [],
-            [BMonsterStudios[4]]: [],
-            [BMonsterStudios[5]]: [],
-            [BMonsterStudios[6]]: [],
-            [BMonsterStudios[7]]: [],
-        };
+        // Get the date and time of a day in the future as max date
+        const maxDate = new Date(date);
+        maxDate.setUTCHours(
+            date.getUTCHours() + 23,
+            date.getUTCMinutes() + 59,
+            date.getUTCSeconds() + 59,
+            date.getUTCMilliseconds() + 999
+        );
+
+        // Group the lessons by studio in the given date
+        const result = await Lesson.aggregate<AggregateSchedule>()
+            .match({
+                time: { $gte: date, $lte: maxDate },
+            })
+            .group({
+                _id: {
+                    studio: "$studio.name",
+                },
+                lessons: {
+                    $push: "$$ROOT",
+                },
+            })
+            .exec();
+
+        // Return every lesson by studio name
+        const lessonsByStudio: LessonsByDateGroupedByStudioRes = {};
+        Object.keys(BMonsterStudios)
+            .filter((value) => isNaN(Number(value)))
+            .forEach((studioName) => (lessonsByStudio[studioName] = []));
+
+        result.forEach((lesson) => {
+            lessonsByStudio[lesson._id.studio] = lesson.lessons;
+        });
+
+        return lessonsByStudio;
     },
 };
 
