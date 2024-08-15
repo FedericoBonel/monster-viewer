@@ -23,6 +23,7 @@ const lessonsRepository: LessonsRepository = {
             .match({
                 time: { $gte: date, $lte: maxDate },
             })
+            .sort("time")
             .group({
                 _id: {
                     studio: "$studio.name",
