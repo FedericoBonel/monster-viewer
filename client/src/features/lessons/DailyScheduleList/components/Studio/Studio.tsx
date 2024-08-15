@@ -39,7 +39,7 @@ const Studio = ({ studioName, lessons }: StudioProps) => {
                 .format(validation.dates.timeFormat)}`;
             return (
                 <ScheduleColumnCell
-                    key={index}
+                    key={lesson._id}
                     title={lesson.performer.name}
                     subtitleTop={timeStr}
                     subtitleBottom={lesson.program.name}
