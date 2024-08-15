@@ -21,6 +21,7 @@ interface StudioProps {
 /** Renders a studio column in a daily schedule with all its lessons for the day as cells */
 const Studio = ({ studioName, lessons }: StudioProps) => {
     let currLesson = 0;
+    
     const lessonCells = studiosConstants.plannedScheduleByStudio[
         studioName
     ]?.map((studioSchedule, index) => {

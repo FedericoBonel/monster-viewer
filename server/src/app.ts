@@ -16,15 +16,15 @@ const appFactory: AppFactory = {
         app.use(compression());
         app.use(json());
         app.use(urlencoded({ extended: true }));
-
+        // Set up the HTTP logger
+        loggingMW.setup(app);
+        
         // Setup the security middleware
         securityMW.setup(app);
 
         // Set the number of trusted proxies
         app.set("trust proxy", config.server.proxies.maxTrusted);
 
-        // Set up the HTTP logger
-        loggingMW.setup(app);
 
         // Routes configuration
         routerSetup.configRoutes(app);
