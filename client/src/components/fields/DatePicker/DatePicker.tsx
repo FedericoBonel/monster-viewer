@@ -13,6 +13,7 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import {
     DatePickerStyles,
     PrevNextButtonStyles,
+    TextFieldAdornmentStyles,
     TextFieldStyles,
 } from "./styles";
 import messages from "@/utils/constants/messages";
@@ -36,7 +37,7 @@ const datePickerSlotProps: DatePickerSlotProps<Dayjs, false> = {
     textField: {
         InputProps: {
             startAdornment: (
-                <InputAdornment position="start">
+                <InputAdornment position="start" sx={TextFieldAdornmentStyles}>
                     <CalendarMonthIcon />
                 </InputAdornment>
             ),
