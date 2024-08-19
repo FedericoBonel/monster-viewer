@@ -28,16 +28,12 @@ const dailyScheduleListingValidator: Array<RequestHandler> = [
                                     constants.validation.lessons.dateFrom
                                         .daysBefore
                             );
-                            minDate.setUTCHours(0);
-                            minDate.setUTCMinutes(0, 0, 0);
                             const maxDate = new Date();
                             maxDate.setUTCDate(
                                 maxDate.getDate() +
                                     constants.validation.lessons.dateFrom
                                         .daysAfter
                             );
-                            maxDate.setUTCHours(0);
-                            maxDate.setUTCMinutes(0, 0, 0);
                             return (
                                 minDate.getTime() < dateFrom.getTime() &&
                                 dateFrom.getTime() < maxDate.getTime()
