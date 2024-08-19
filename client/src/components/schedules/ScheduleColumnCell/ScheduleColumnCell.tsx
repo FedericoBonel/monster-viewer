@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, ReactNode } from "react";
 import Card from "@mui/material/Card";
 import CardActionArea from "@mui/material/CardActionArea";
 import CardHeader from "@mui/material/CardHeader";
@@ -15,7 +15,7 @@ interface ScheduleColumnCellProps {
     /** The message to show on the title */
     title?: string;
     /** The message to show on the bottom subtitle */
-    subtitleBottom?: string;
+    subtitleBottom?: ReactNode;
     /** The link where the user should be redirected after clicking on the cell */
     href?: string;
     /** If true then the cell is disabled and not clickable */

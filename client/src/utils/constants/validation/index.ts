@@ -16,6 +16,10 @@ const validation: Validation = {
         dateFormat: "YYYY-MM-DD",
         timeFormat: "H:mm"
     },
+    events: {
+        event: "EVENT",
+        unkown: "？？？"
+    }
 };
 
 export default validation;

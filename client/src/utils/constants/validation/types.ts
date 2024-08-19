@@ -12,4 +12,11 @@ export default interface Validation {
         /** Date time format for Day js */
         timeFormat: string;
     };
+    /** Events related validation strings */
+    events: {
+        /** The difficulty of a basic event */
+        event: string;
+        /** Unkown difficulty */
+        unkown: string;
+    }
 }

@@ -1,4 +1,5 @@
 import dayjs from "@/lib/dayjs/instance";
+import Chip from "@mui/material/Chip";
 import LessonItem from "@/apis/dtos/lessons/LessonItem";
 import ScheduleColumn from "@/components/schedules/ScheduleColumn";
 import ScheduleColumnCell from "@/components/schedules/ScheduleColumnCell";
@@ -6,6 +7,7 @@ import ScheduleColumnHeader from "@/components/schedules/ScheduleColumnHeader";
 import routes from "@/utils/constants/routes";
 import validation from "@/utils/constants/validation";
 import studiosConstants from "@/utils/constants/studios";
+import isEvent from "./isEvent";
 
 interface StudioProps {
     /** The name of the studio. This is the header of the column */
@@ -21,7 +23,7 @@ interface StudioProps {
 /** Renders a studio column in a daily schedule with all its lessons for the day as cells */
 const Studio = ({ studioName, lessons }: StudioProps) => {
     let currLesson = 0;
-    
+
     const lessonCells = studiosConstants.plannedScheduleByStudio[
         studioName
     ]?.map((studioSchedule, index) => {
@@ -43,7 +45,16 @@ const Studio = ({ studioName, lessons }: StudioProps) => {
                     key={lesson._id}
                     title={lesson.performer.name}
                     subtitleTop={timeStr}
-                    subtitleBottom={lesson.program.name}
+                    subtitleBottom={
+                        <Chip
+                            label={lesson.program.name}
+                            color={
+                                isEvent(lesson.difficulty.name)
+                                    ? "success"
+                                    : undefined
+                            }
+                        />
+                    }
                     href={routes.lesson(lesson._id)}
                 />
             );
