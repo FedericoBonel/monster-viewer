@@ -4,7 +4,7 @@ const validation: ValidationValues = {
     lessons: {
         dateFrom: {
             daysBefore: 60,
-            daysAfter: 14,
+            daysAfter: 13,
         },
     },
     pagination: {
