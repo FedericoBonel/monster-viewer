@@ -1,0 +1,33 @@
+{
+    "compilerOptions": {
+        /* Language and Environment */
+        "target": "ESNext" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
+
+        /* Modules */
+        "module": "NodeNext" /* Specify what module code is generated. */,
+        "moduleResolution": "NodeNext",
+        "sourceMap": true /* Create source map files for emitted JavaScript files. */,
+        "outDir": "./dist" /* Specify an output folder for all emitted files. */,
+        "esModuleInterop": true /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */,
+        "forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */,
+
+        /* Type Checking */
+        "strict": true /* Enable all strict type-checking options. */,
+        "noImplicitAny": true /* Enable error reporting for expressions and declarations with an implied 'any' type. */,
+        "skipLibCheck": true /* Skip type checking all .d.ts files. */,
+        
+        /** Path aliases **/
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["./src/*"]
+        },
+
+        /** Add the plugin to transform alias paths to relative paths. This requires the use if ts-patch so that it may be picked up during compilation time. **/
+        "plugins": [{ "transform": "typescript-transform-paths" }]
+    },
+    "ts-node": {
+        /** Tell ts node to use tsconfig paths to actually transform @/ paths to relative paths **/
+        "require": ["tsconfig-paths/register"]
+    },
+    "include": ["src/**/*"]
+}

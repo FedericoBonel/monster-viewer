@@ -14,10 +14,11 @@ interface BMonsterURLs {
     /** Urls for managing lessons */
     lessons: {
         /**
-         * Returns the url to get all studios by code
+         * Returns the url to get all lessons by studio code for a week from the given date
          * @param studio The studio code to get
+         * @param date The date from which get all lessons
          */
-        get(studio: BMonsterStudios): string;
+        get(studio: BMonsterStudios, date: Date): string;
     };
 }
 

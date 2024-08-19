@@ -2,6 +2,7 @@ import { ErrorRequestHandler } from "express";
 import { StatusCodes, ReasonPhrases } from "http-status-codes";
 import APIError from "../../utils/errors/APIError";
 import createErrorPayload from "../../utils/payloads/ErrorPayload";
+import logger from "../../utils/logger";
 
 /**
  * Middleware that receives all the errors that occur
@@ -14,7 +15,7 @@ const errorHandlerMW: ErrorRequestHandler = async (
     res,
     next
 ) => {
-    console.error(err.stack ?? "");
+    logger.error(err);
     let serverError: APIError = err as APIError;
 
     // If the error wasn't defined  by us, we create a generic server error
