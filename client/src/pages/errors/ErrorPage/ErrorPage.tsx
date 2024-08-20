@@ -7,6 +7,7 @@ import routes from "@/utils/constants/routes";
 import messages from "@/utils/constants/messages";
 import { ImgContainerStyles, ImgStyles, MsgContainerStyles } from "./styles";
 
+/** Gets the error code from a code grabbed from URL params */
 const getErrorCode = (code?: string): keyof typeof messages.errorPage => {
     switch (code) {
         case "429":

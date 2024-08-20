@@ -8,4 +8,12 @@ export default interface Routes {
     error: (code?: number) => string;
     /** Creates the route to go to the lesson reservation page */
     lesson: (lessonId: string) => string;
+    /** Creates the terms and conditions base route */
+    terms: () => string;
+    /** Creates the privacy subroute */
+    privacy: () => string;
+    /** Creates the advertisement policy link */
+    advertisementDist: () => string;
+    /** Creates the data analysis policy link */
+    dataAnalysis: () => string;
 }

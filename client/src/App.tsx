@@ -4,6 +4,7 @@ import {
     Navigate,
 } from "react-router-dom";
 import LessonsRouter from "@/routers/lessons";
+import TermsRouter from "@/routers/terms";
 import ErrorRouter from "@/routers/errors";
 import ErrorHandler from "@/routers/utils/errors/ErrorHandler";
 import routes from "@/utils/constants/routes";
@@ -18,10 +19,15 @@ const appRouter = createBrowserRouter([
                 index: true,
                 element: <Navigate to={routes.dailyschedule()} />,
             },
-            // Show the daily schedule page
+            // Show the daily schedule pages
             {
                 path: routes.dailyschedule(),
                 children: [LessonsRouter],
+            },
+            // Show the terms and policies pages
+            {
+                path: routes.terms(),
+                children: [TermsRouter],
             },
             // Error page
             {

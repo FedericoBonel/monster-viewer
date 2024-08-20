@@ -34,6 +34,32 @@ interface Messages {
             goBack: string;
         };
     };
+    /** Terms, conditions and policies strings */
+    terms: {
+        /** Terms and conditions about privacy */
+        privacy: {
+            /** The terms and conditions header for privacy */
+            pageHeader: string;
+            /** The terms and conditions about privacy for advertisement (adsense) */
+            advertisementDistr: {
+                /** The terms and conditions about privacy for advertisement (adsense) subheader */
+                subHeader: string
+                /** The terms and conditions about privacy for advertisement (adsense) description */
+                description: string;
+                /** The terms and conditions about privacy for advertisement (adsense) link text */
+                link: string;
+            };
+            /** The terms and conditions about privacy for data collection */
+            dataAnalysis: {
+                /** The terms and conditions about privacy for data collection subheader */
+                subHeader: string
+                /** The terms and conditions about privacy for data collection description */
+                description: string;
+                /** The terms and conditions about privacy for data collection link text */
+                link: string;
+            };
+        };
+    };
 }
 
 export default Messages;
