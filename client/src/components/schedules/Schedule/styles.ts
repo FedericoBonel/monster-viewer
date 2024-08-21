@@ -5,5 +5,4 @@ export const ScheduleStyles: SxProps = {
     position: "relative",
     maxWidth: { xs: "100%", md: "80%" },
     overflow: "auto",
-    padding: { xs: "0 16px 16px 16px" },
 };
