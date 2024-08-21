@@ -14,12 +14,15 @@ const validation: Validation = {
             .set("minute", 0)
             .set("second", 0),
         dateFormat: "YYYY-MM-DD",
-        timeFormat: "H:mm"
+        timeFormat: "H:mm",
     },
     events: {
         event: "EVENT",
-        unkown: "？？？"
-    }
+        unkown: "？？？",
+    },
+    api: {
+        nMinutesWindow: 1,
+    },
 };
 
 export default validation;

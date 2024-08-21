@@ -27,7 +27,7 @@ const ErrorPage = () => {
     const goBack = messages.errorPage[msgKey]?.goBack;
 
     return (
-        <Grid container padding={4} minHeight={"100dvh"}>
+        <Grid container padding={4} component="main">
             <Grid xs={12} md={6} sx={ImgContainerStyles}>
                 <Box
                     component="img"

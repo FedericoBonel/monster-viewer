@@ -43,7 +43,7 @@ interface Messages {
             /** The terms and conditions about privacy for advertisement (adsense) */
             advertisementDistr: {
                 /** The terms and conditions about privacy for advertisement (adsense) subheader */
-                subHeader: string
+                subHeader: string;
                 /** The terms and conditions about privacy for advertisement (adsense) description */
                 description: string;
                 /** The terms and conditions about privacy for advertisement (adsense) link text */
@@ -52,12 +52,22 @@ interface Messages {
             /** The terms and conditions about privacy for data collection */
             dataAnalysis: {
                 /** The terms and conditions about privacy for data collection subheader */
-                subHeader: string
+                subHeader: string;
                 /** The terms and conditions about privacy for data collection description */
                 description: string;
                 /** The terms and conditions about privacy for data collection link text */
                 link: string;
             };
+        };
+    };
+    /** Navbar messages */
+    navbar: {
+        /** Navbar links messages */
+        links: {
+            /** The link to the lessons by gym page */
+            lessonsByGym: string;
+            /** The link to the privacy policy and terms page */
+            privacy: string;
         };
     };
 }

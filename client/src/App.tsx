@@ -3,6 +3,7 @@ import {
     RouterProvider,
     Navigate,
 } from "react-router-dom";
+import Navbar from "@/routers/layouts/Navbar";
 import LessonsRouter from "@/routers/lessons";
 import TermsRouter from "@/routers/terms";
 import ErrorRouter from "@/routers/errors";
@@ -13,6 +14,7 @@ import routes from "@/utils/constants/routes";
 const appRouter = createBrowserRouter([
     {
         errorElement: <ErrorHandler />,
+        element: <Navbar />,
         children: [
             // Redirect to daily schedule
             {

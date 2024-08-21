@@ -4,5 +4,5 @@ export const PageWrapperStyles: SxProps = {
     display: "flex",
     alignItems: "center",
     flexDirection: "column",
-    height: "100dvh"
+    maxHeight: "90dvh"
 };

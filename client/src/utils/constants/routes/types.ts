@@ -9,7 +9,7 @@ export default interface Routes {
     /** Creates the route to go to the lesson reservation page */
     lesson: (lessonId: string) => string;
     /** Creates the terms and conditions base route */
-    terms: () => string;
+    terms: (subRoute?: string) => string;
     /** Creates the privacy subroute */
     privacy: () => string;
     /** Creates the advertisement policy link */

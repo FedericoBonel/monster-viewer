@@ -6,7 +6,7 @@ import { PageWrapperStyles } from "./styles";
 const LessonsPage = () => {
     return (
         <Grid container>
-            <Grid xs={12} sx={PageWrapperStyles}>
+            <Grid xs={12} sx={PageWrapperStyles} component="main">
                 <DailyScheduleList />
             </Grid>
         </Grid>

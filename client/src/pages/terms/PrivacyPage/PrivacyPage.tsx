@@ -8,7 +8,7 @@ import { HeaderStyles } from "./styles";
 /** Renders the terms for the privacy page */
 const PrivacyPage = () => {
     return (
-        <Grid container padding={4}>
+        <Grid container padding={4} component="main">
             <Grid sx={HeaderStyles}>
                 <Typography variant="h3" component="h1">
                     {messages.terms.privacy.pageHeader}

@@ -1,3 +1,4 @@
+import validation from "../validation";
 import Messages from "./types";
 
 const messages: Readonly<Messages> = {
@@ -18,8 +19,8 @@ const messages: Readonly<Messages> = {
         },
         429: {
             header: "あなたはモンスターですね！🏋",
-            body: "あなたはあまりにも速くナビゲートしています！ レート制限に達しました。1分待ってから再度お試しください。",
-            goBack: "1分待った後、こちらをクリックしてホームに戻ってください。",
+            body: `あなたはあまりにも速くナビゲートしています！ レート制限に達しました。${validation.api.nMinutesWindow}分待ってから再度お試しください。`,
+            goBack: `${validation.api.nMinutesWindow}分待った後、こちらをクリックしてホームに戻ってください。`,
         },
     },
     terms: {
@@ -41,6 +42,12 @@ const messages: Readonly<Messages> = {
                     この機能はCookieを無効にすることで収集を拒否することが出来ますので、お使いのブラウザの設定をご確認ください。この規約に関して、`,
                 link: "詳しくはこちらをクリックしてください",
             },
+        },
+    },
+    navbar: {
+        links: {
+            lessonsByGym: "スタジオ別レッスン",
+            privacy: "プライバシー",
         },
     },
 };
