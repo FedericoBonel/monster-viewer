@@ -16,4 +16,6 @@ export default interface Routes {
     advertisementDist: () => string;
     /** Creates the data analysis policy link */
     dataAnalysis: () => string;
+    /** Creates the tipping/donating link */
+    tipping: () => string;
 }

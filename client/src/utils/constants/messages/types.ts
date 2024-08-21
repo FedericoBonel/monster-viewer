@@ -68,6 +68,8 @@ interface Messages {
             lessonsByGym: string;
             /** The link to the privacy policy and terms page */
             privacy: string;
+            /** The link to the tipping/donation page */
+            tipping: string;
         };
     };
 }

@@ -10,12 +10,15 @@ import MenuIcon from "@mui/icons-material/Menu";
 import routes from "@/utils/constants/routes";
 import DesktopNavbar from "./components/DesktopNavbar";
 import MobileNavbar from "./components/MobileNavbar";
-import { DrawerToggleButton } from "./styles";
+import {
+    RightButtonsContainerStyles,
+    DrawerToggleButton,
+    RightButtonStyles,
+} from "./styles";
 import messages from "@/utils/constants/messages";
 
 /** Layout that renders the navbar of the application on nested routes */
 const Navbar = () => {
-    // TODO: In components, extract the outer styles, so that you can pass them when you need them
     const [drawerIsOpen, setDrawerIsOpen] = useState<boolean>(false);
     const match = useMatch("/:selectedMenu/*");
     const selectedMenu = `/${match?.params.selectedMenu}`;
@@ -68,6 +71,20 @@ const Navbar = () => {
                         <MenuIcon />
                     </IconButton>
                     <DesktopNavbar>{navButtons}</DesktopNavbar>
+                    <Box sx={RightButtonsContainerStyles}>
+                        <Button
+                            component={Link}
+                            to={routes.tipping()}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            variant="contained"
+                            color="info"
+                            disableElevation
+                            sx={RightButtonStyles}
+                        >
+                            {messages.navbar.links.tipping}
+                        </Button>
+                    </Box>
                 </Toolbar>
             </AppBar>
             <MobileNavbar open={drawerIsOpen} onClose={toggleDrawer}>

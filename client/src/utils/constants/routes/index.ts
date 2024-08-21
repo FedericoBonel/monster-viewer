@@ -13,6 +13,7 @@ const routes: Routes = {
         "https://policies.google.com/technologies/ads?hl=ja",
     dataAnalysis: () =>
         "https://marketingplatform.google.com/about/analytics/terms/jp/",
+    tipping: () => "https://ko-fi.com/botozzi"
 };
 
 export default routes;
