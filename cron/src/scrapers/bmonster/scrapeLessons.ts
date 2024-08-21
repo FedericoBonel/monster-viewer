@@ -12,7 +12,7 @@ async function scrapeLessons(): Promise<ScrapedLesson[]> {
     const browser = await puppeteer.launch();
 
     // Login into the users account in the browser to get all lessons
-    login(
+    await login(
         browser,
         config.bmon.credentials.email,
         config.bmon.credentials.password
