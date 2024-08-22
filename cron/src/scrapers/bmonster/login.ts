@@ -13,7 +13,9 @@ async function login(
 
     logger.info("Logging in");
 
-    await page.goto("https://b-monster.hacomono.jp/home");
+    await page.goto("https://b-monster.hacomono.jp/home", {
+        waitUntil: "domcontentloaded",
+    });
 
     await page.waitForSelector(htmlSelectors.loginLaunch);
     await page.click(htmlSelectors.loginLaunch);
@@ -24,7 +26,7 @@ async function login(
     await loginFields[1].type(password);
 
     await Promise.all([
-        page.waitForNavigation(),
+        page.waitForNavigation({ waitUntil: "domcontentloaded" }),
         page.click(`${htmlSelectors.loginForm} button`),
     ]);
 
