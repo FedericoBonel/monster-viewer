@@ -14,8 +14,11 @@ async function scrapeLessonsByDate(
 ): Promise<ScrapedLesson[]> {
     const page = await browser.newPage();
     page.setViewport({ width: 1920, height: 1080 });
+    page.setDefaultNavigationTimeout(120000);
 
-    await page.goto(scrapingURLs.getWeeklyLessonsByStudio(date, studioId));
+    await page.goto(scrapingURLs.getWeeklyLessonsByStudio(date, studioId), {
+        waitUntil: "domcontentloaded",
+    });
 
     // Get the lessons for the week
     await page.waitForSelector(htmlSelectors.lessonsRows);
@@ -127,7 +130,7 @@ async function addIDLessonTo(
             await page.waitForSelector(`${htmlSelectors.lessonsRows} > div`);
 
             await Promise.all([
-                page.waitForNavigation(),
+                page.waitForNavigation({ waitUntil: "domcontentloaded" }),
                 page.evaluate(
                     (row, col, selectors) => {
                         const newLessons = document
@@ -153,7 +156,10 @@ async function addIDLessonTo(
             const bmonsterId = page.url().substring(indexOfId, indexOfId + 8);
             currLesson.bmonsterId = bmonsterId;
 
-            await Promise.all([page.waitForNavigation(), page.goBack()]);
+            await Promise.all([
+                page.waitForNavigation({ waitUntil: "domcontentloaded" }),
+                page.goBack(),
+            ]);
         }
     }
 }
