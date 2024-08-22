@@ -31,16 +31,14 @@ const ScheduleColumnCell = ({
     disabled = false,
 }: ScheduleColumnCellProps) => {
     return (
-        <Card
-            sx={ScheduleCellCardStyles(disabled)}
-            component="a"
-            href={href}
-            rel="noreferrer noopener"
-            target="_blank"
-        >
+        <Card sx={ScheduleCellCardStyles(disabled)} component="article">
             <CardActionArea
                 sx={ScheduleCellCardActionAreaStyles}
                 disabled={disabled}
+                component="a"
+                href={href}
+                target="_blank"
+                rel="noreferrer noopener"
             >
                 <CardHeader
                     sx={ScheduleCellTitleStyles}
