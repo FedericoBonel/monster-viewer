@@ -1,8 +1,8 @@
 import { SxProps } from "@mui/material/styles";
 
-export const PageWrapperStyles: SxProps = {
+export const HeaderStyles: SxProps = {
     display: "flex",
-    alignItems: "center",
     flexDirection: "column",
-    maxHeight: "90dvh"
+    paddingBottom: 4,
+    gap: 1,
 };

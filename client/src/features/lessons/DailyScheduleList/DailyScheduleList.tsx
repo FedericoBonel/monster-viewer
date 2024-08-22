@@ -51,11 +51,9 @@ const DailyScheduleList = () => {
                 minDate={validation.dates.minDate}
                 maxDate={validation.dates.maxDate}
             />
-            <Schedule>
-                <ShowLoader isLoading={dailyScheduleQuery.isPending}>
-                    {studioColumns}
-                </ShowLoader>
-            </Schedule>
+            <ShowLoader isLoading={dailyScheduleQuery.isPending}>
+                <Schedule>{studioColumns}</Schedule>
+            </ShowLoader>
         </>
     );
 };

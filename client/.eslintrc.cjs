@@ -19,7 +19,7 @@ module.exports = {
             { allowConstantExport: true },
         ],
         quotes: ["error", "double"],
-        indent: ["error", 4],
+        indent: ["error", 4, { switchCase: 1 }],
     },
     parserOptions: {
         ecmaVersion: "latest",
