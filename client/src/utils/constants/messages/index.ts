@@ -48,7 +48,7 @@ const messages: Readonly<Messages> = {
         links: {
             lessonsByGym: "スタジオ別レッスン",
             privacy: "プライバシー",
-            tipping: "よかったらコーヒー奢ってね〜☕",
+            tipping: "開発者にコーヒーを奢る🥊",
         },
     },
 };
