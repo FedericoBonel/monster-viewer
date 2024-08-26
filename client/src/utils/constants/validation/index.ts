@@ -15,6 +15,7 @@ const validation: Validation = {
             .set("second", 0),
         dateFormat: "YYYY-MM-DD",
         timeFormat: "H:mm",
+        fieldPickerFormat: "YYYY/MM/DD (dd)",
     },
     events: {
         event: "EVENT",

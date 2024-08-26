@@ -11,6 +11,8 @@ export default interface Validation {
         dateFormat: string;
         /** Date time format for Day js */
         timeFormat: string;
+        /** Date and day of the week format for field picker */
+        fieldPickerFormat: string;
     };
     /** Events related validation strings */
     events: {

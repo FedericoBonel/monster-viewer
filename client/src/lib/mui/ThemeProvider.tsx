@@ -10,8 +10,10 @@ import {
 } from "@mui/material/styles";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { jaJP } from "@mui/x-date-pickers/locales";
+import "dayjs/locale/ja";
 
-const theme = createTheme();
+const theme = createTheme({}, jaJP);
 
 interface ThemeProviderProps {
     children: React.ReactNode;
@@ -24,7 +26,15 @@ interface ThemeProviderProps {
  */
 const ThemeProvider = ({ children }: ThemeProviderProps) => {
     return (
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <LocalizationProvider
+            dateAdapter={AdapterDayjs}
+            // This comes from the dayjs library
+            adapterLocale="ja"
+            // This comes from the MUI library for the pickers and menus
+            localeText={
+                jaJP.components.MuiLocalizationProvider.defaultProps.localeText
+            }
+        >
             <MUIThemeProvider theme={theme}>
                 <CssBaseline enableColorScheme />
                 {children}

@@ -17,6 +17,7 @@ import {
     TextFieldStyles,
 } from "./styles";
 import messages from "@/utils/constants/messages";
+import validation from "@/utils/constants/validation";
 
 interface DatePicker {
     /** The date that is currently being selected */
@@ -90,6 +91,7 @@ const DatePicker = ({
                 slotProps={datePickerSlotProps}
                 minDate={minDate}
                 maxDate={maxDate}
+                format={validation.dates.fieldPickerFormat}
             />
             <IconButton
                 aria-label="next-day"
